@@ -1,0 +1,10 @@
+-- 코드를 입력하세요
+SELECT I.REST_ID	,I.REST_NAME	,I.FOOD_TYPE	,I.FAVORITES
+,I.ADDRESS,	round(avg(R.REVIEW_SCORE),2)as score
+from REST_INFO I, REST_REVIEW R
+where I.REST_ID = R.REST_ID
+
+group by I.REST_ID ,I.REST_NAME ,I.FOOD_TYPE ,I.FAVORITES
+,I.ADDRESS
+having  I.ADDRESS like '서울%'
+order by round(avg(R.REVIEW_SCORE),2)desc, I.FAVORITES	desc;
