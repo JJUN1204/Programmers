@@ -1,0 +1,13 @@
+SELECT to_char(A.SALES_DATE, 'YYYY-MM-DD') as SALES_DATE
+, A.PRODUCT_ID,A.USER_ID,A.SALES_AMOUNT
+from ONLINE_SALE A
+where to_char(A.sales_date ,'YYYY-MM') = '2022-03'
+
+union all
+
+SELECT to_char(B.SALES_DATE, 'YYYY-MM-DD') as SALES_DATE
+,B.PRODUCT_ID,NULL as USER_ID,B.SALES_AMOUNT
+from OFFLINE_SALE B
+where to_char(B.sales_date ,'YYYY-MM') = '2022-03'
+
+order by SALES_DATE,PRODUCT_ID,USER_ID	
